@@ -35,7 +35,15 @@ function compressImages() {
       } else if (fileExtension === '.gif') {
         imageProcessor = imageProcessor.gif({ quality: 80 });
       } else if (fileExtension === '.svg') {
-        imageProcessor = imageProcessor.svg();
+        // For SVG files, simply copy to the output folder without processing
+        fs.copyFile(inputFilePath, outputFilePath, (err) => {
+          if (err) {
+            console.error(`Error copying ${file}:`, err);
+          } else {
+            console.log(`Successfully copied ${file}`);
+          }
+        });
+        return; // Skip processing for SVG files
       } else {
         console.warn(`Skipping compression for unsupported file: ${file}`);
         return;
