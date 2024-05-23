@@ -1,3 +1,8 @@
+console.log("added new file");
+console.log('test 2');
+console.log('test 2.1');
+console.log('test 1');
+console.log('test 1.1');
 const img1 = document.getElementById('foo');
 const img = new Image();
 img.src = "./img/hotel-1.jpg";
